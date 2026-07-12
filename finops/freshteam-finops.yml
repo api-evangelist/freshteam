@@ -1,0 +1,94 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Freshteam
+providerId: freshteam
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Human Resources
+- HRIS
+- Applicant Tracking
+- FinOps
+- Cost Management
+- FOCUS
+- End of Life
+description: >-
+  FinOps view of Freshteam spend. Freshteam was billed on a per-employee-per-month
+  basis plus a flat monthly platform fee on paid tiers (Growth, Pro, Enterprise),
+  with the API included in the subscription rather than metered separately. The
+  primary cost driver was headcount (subscribed employees), not API call volume.
+  A critical governance note - Freshworks has announced the end-of-life of
+  Freshteam - new subscriptions and renewals are halted from March 7, 2026, and
+  existing customers retain access only through their remaining term (reported
+  through approximately April 2027). Cost planning should therefore center on
+  migration off Freshteam rather than on ongoing optimization.
+notes: >-
+  Because renewals are closed, the dominant FinOps activity is exit planning -
+  data export, contract wind-down, and re-platforming HR/ATS workloads (Freshworks
+  is steering non-IT teams toward Freshservice for Business Teams). Verify any
+  surviving contractual rate directly with Freshworks.
+sources:
+- https://www.freshworks.com/hrms/
+- https://developers.freshteam.com/api/
+- https://www.pin.com/blog/freshteam-pricing/
+- https://www.peoplematters.in/news/business/freshworks-to-end-freshteam-hr-product-stop-renewals-from-march-2026-47939
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Freshworks
+serviceCategory: Human Resources and Recruiting Software
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Freshteam
+  ServiceCategory: Human Resources and Recruiting Software
+  ProviderName: Freshworks
+  PublisherName: Freshworks
+  InvoiceIssuerName: Freshworks
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+meters:
+- name: subscribed_employees
+  description: Number of subscribed employees, the primary per-employee-per-month billing metric.
+  unit: employees
+  aggregation: max
+  dimensions:
+  - account
+  - plan
+- name: platform_fee
+  description: Flat monthly platform fee applied on paid tiers regardless of headcount.
+  unit: subscription
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: api_requests
+  description: API request volume against per-minute rate limits; included in the subscription, not billed separately.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Track subscribed-employee counts and platform fees per account; API usage is not a separate billed line.
+- name: Allocation
+  description: Map Freshteam cost to HR/recruiting cost centers by headcount and plan tier.
+- name: Optimization
+  description: With renewals closed, optimize by planning an orderly migration off Freshteam and exporting data before term end rather than tuning ongoing spend.
+- name: Accountability
+  description: Assign an owner for the Freshteam wind-down and migration timeline ahead of the end-of-life deadline.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

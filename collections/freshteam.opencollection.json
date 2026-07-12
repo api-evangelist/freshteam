@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Freshteam API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{apiToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Employees", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List employees.", "type": "http" },
+          "http": { "method": "GET", "url": "https://{{domain}}.freshteam.com/api/employees" },
+          "docs": "Lists employees in the account. Paginated via page, sort, and sort_type."
+        },
+        {
+          "info": { "name": "Create an employee.", "type": "http" },
+          "http": { "method": "POST", "url": "https://{{domain}}.freshteam.com/api/employees", "body": { "type": "json", "data": "{}" } },
+          "docs": "Creates a new employee record."
+        },
+        {
+          "info": { "name": "Retrieve an employee.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{domain}}.freshteam.com/api/employees/:id",
+            "params": [ { "name": "id", "value": "", "type": "path", "description": "The employee ID." } ]
+          },
+          "docs": "Retrieves an employee by ID."
+        },
+        {
+          "info": { "name": "Update an employee.", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{domain}}.freshteam.com/api/employees/:id",
+            "params": [ { "name": "id", "value": "", "type": "path", "description": "The employee ID." } ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an existing employee record."
+        },
+        {
+          "info": { "name": "List employee fields.", "type": "http" },
+          "http": { "method": "GET", "url": "https://{{domain}}.freshteam.com/api/employee_fields" },
+          "docs": "Lists the standard and custom fields defined on employee records."
+        },
+        {
+          "info": { "name": "List departments.", "type": "http" },
+          "http": { "method": "GET", "url": "https://{{domain}}.freshteam.com/api/departments" },
+          "docs": "Lists departments in the organization structure."
+        },
+        {
+          "info": { "name": "List branches.", "type": "http" },
+          "http": { "method": "GET", "url": "https://{{domain}}.freshteam.com/api/branches" },
+          "docs": "Lists branches in the organization structure."
+        },
+        {
+          "info": { "name": "List roles.", "type": "http" },
+          "http": { "method": "GET", "url": "https://{{domain}}.freshteam.com/api/roles" },
+          "docs": "Lists roles configured in the account."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Time-off", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List time-off requests.", "type": "http" },
+          "http": { "method": "GET", "url": "https://{{domain}}.freshteam.com/api/time_offs" },
+          "docs": "Lists time-off (leave) requests."
+        },
+        {
+          "info": { "name": "Create a time-off request.", "type": "http" },
+          "http": { "method": "POST", "url": "https://{{domain}}.freshteam.com/api/time_offs", "body": { "type": "json", "data": "{}" } },
+          "docs": "Creates a new time-off request."
+        },
+        {
+          "info": { "name": "Approve a time-off request.", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{domain}}.freshteam.com/api/time_offs/:id/approve",
+            "params": [ { "name": "id", "value": "", "type": "path", "description": "The time-off request ID." } ]
+          },
+          "docs": "Approves a pending time-off request."
+        },
+        {
+          "info": { "name": "Cancel a time-off request.", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{domain}}.freshteam.com/api/time_offs/:id/cancel",
+            "params": [ { "name": "id", "value": "", "type": "path", "description": "The time-off request ID." } ]
+          },
+          "docs": "Cancels a time-off request."
+        },
+        {
+          "info": { "name": "List time-off types.", "type": "http" },
+          "http": { "method": "GET", "url": "https://{{domain}}.freshteam.com/api/time_off_types" },
+          "docs": "Lists the configured time-off types."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Job Postings", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List job postings.", "type": "http" },
+          "http": { "method": "GET", "url": "https://{{domain}}.freshteam.com/api/job_postings" },
+          "docs": "Lists job postings managed in the ATS."
+        },
+        {
+          "info": { "name": "Retrieve a job posting.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{domain}}.freshteam.com/api/job_postings/:id",
+            "params": [ { "name": "id", "value": "", "type": "path", "description": "The job posting ID." } ]
+          },
+          "docs": "Retrieves a job posting by ID."
+        },
+        {
+          "info": { "name": "List job posting fields.", "type": "http" },
+          "http": { "method": "GET", "url": "https://{{domain}}.freshteam.com/api/job_posting_fields" },
+          "docs": "Lists the fields defined on job postings."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Applicants", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create an applicant for a job posting.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://{{domain}}.freshteam.com/api/job_postings/:id/applicants",
+            "params": [ { "name": "id", "value": "", "type": "path", "description": "The job posting ID." } ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Adds an applicant (candidate) to the specified job posting."
+        },
+        {
+          "info": { "name": "List candidate sources.", "type": "http" },
+          "http": { "method": "GET", "url": "https://{{domain}}.freshteam.com/api/candidate_sources" },
+          "docs": "Lists candidate sources."
+        },
+        {
+          "info": { "name": "Create a candidate source.", "type": "http" },
+          "http": { "method": "POST", "url": "https://{{domain}}.freshteam.com/api/candidate_sources", "body": { "type": "json", "data": "{}" } },
+          "docs": "Creates a new candidate source."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Onboarding", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a new hire.", "type": "http" },
+          "http": { "method": "POST", "url": "https://{{domain}}.freshteam.com/api/new_hires", "body": { "type": "json", "data": "{}" } },
+          "docs": "Creates a new-hire record for onboarding."
+        },
+        {
+          "info": { "name": "Retrieve a new hire.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{domain}}.freshteam.com/api/new_hires/:id",
+            "params": [ { "name": "id", "value": "", "type": "path", "description": "The new-hire record ID." } ]
+          },
+          "docs": "Retrieves a new-hire record by ID."
+        }
+      ]
+    }
+  ]
+}

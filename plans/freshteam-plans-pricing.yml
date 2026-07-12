@@ -1,0 +1,156 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Freshteam
+providerId: freshteam
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Human Resources
+- HRIS
+- Applicant Tracking
+- Recruiting
+- Plans
+- End of Life
+description: >-
+  Freshteam was sold on a per-employee-per-month model with a flat monthly
+  platform fee on paid tiers - a Free tier plus Growth, Pro, and Enterprise.
+  The API was included with the subscription; there was no separate API fee.
+  The figures below reflect widely published Freshteam pricing prior to the
+  end-of-life announcement and are not reconciled against a live pricing page,
+  because Freshworks has closed Freshteam to new subscriptions and renewals as
+  of March 7, 2026. Existing customers keep access at their contracted rate
+  through the end of their term (reported through approximately April 2027).
+notes: >-
+  Paid tiers combined a low per-employee rate with a fixed platform fee, so
+  effective per-employee cost was much higher for small teams (for example a
+  10-person Growth account paid roughly 59 USD platform fee plus per-employee
+  charges). Freshteam never included payroll. Verify any surviving contractual
+  terms directly with Freshworks; new purchases are no longer possible.
+sources:
+- https://www.freshworks.com/hrms/
+- https://www.pin.com/blog/freshteam-pricing/
+- https://www.peoplematters.in/news/business/freshworks-to-end-freshteam-hr-product-stop-renewals-from-march-2026-47939
+plans:
+- id: freshteam-free
+  name: Free
+  type: free
+  description: >-
+    Entry tier for very small teams - basic career site, employee directory,
+    up to 3 job postings, and mobile apps. Included API access.
+  entries:
+  - label: Per Employee
+    name: free_per_employee
+    type: usage
+    metric: employees
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '0'
+    userMultiplied: true
+  elements:
+  - name: Employee Directory
+  - name: Career Site
+  - name: Up to 3 Job Postings
+  - name: Mobile Apps
+- id: freshteam-growth
+  name: Growth
+  type: paid
+  description: >-
+    Recruiting automation, custom hiring pipelines, interview scorecards, and
+    up to 20 job postings, billed per employee plus a monthly platform fee.
+  entries:
+  - label: Platform Fee
+    name: growth_platform_fee
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '59'
+    userMultiplied: false
+  - label: Per Employee
+    name: growth_per_employee
+    type: usage
+    metric: employees
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '1.00'
+    userMultiplied: true
+  elements:
+  - name: Recruiting Automation
+  - name: Custom Pipelines
+  - name: Interview Scorecards
+  - name: Up to 20 Job Postings
+- id: freshteam-pro
+  name: Pro
+  type: paid
+  description: >-
+    Candidate sourcing extension, job requisitions, offer management, and up to
+    100 job postings, billed per employee plus a monthly platform fee.
+  entries:
+  - label: Platform Fee
+    name: pro_platform_fee
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '99'
+    userMultiplied: false
+  - label: Per Employee
+    name: pro_per_employee
+    type: usage
+    metric: employees
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '2.00'
+    userMultiplied: true
+  elements:
+  - name: Candidate Sourcing Extension
+  - name: Job Requisitions
+  - name: Offer Management
+  - name: Up to 100 Job Postings
+- id: freshteam-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    IP restrictions, dedicated account manager, unlimited onboarding checklists,
+    and unlimited job postings, billed per employee plus a monthly platform fee.
+  entries:
+  - label: Platform Fee
+    name: enterprise_platform_fee
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '169'
+    userMultiplied: false
+  - label: Per Employee
+    name: enterprise_per_employee
+    type: usage
+    metric: employees
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '4.00'
+    userMultiplied: true
+  elements:
+  - name: IP Restrictions
+  - name: Dedicated Account Manager
+  - name: Unlimited Onboarding Checklists
+  - name: Unlimited Job Postings
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

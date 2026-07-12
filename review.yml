@@ -1,0 +1,102 @@
+aid: freshteam
+name: Freshteam
+review:
+  question: Does Freshteam expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-11'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Freshteam's documented public API is a
+    request/response REST interface over HTTPS on a per-domain base
+    (https://{domain}.freshteam.com/api). There is no documented server-push
+    transport (WebSocket or SSE) on Freshteam's own public API to model.
+    Freshworks does offer app/webhook mechanisms inside its developer platform,
+    but no realtime bidirectional WebSocket surface is published for Freshteam.
+findings:
+  summary: |
+    Freshteam does not publish a documented public WebSocket API. Freshteam is
+    the HR and applicant tracking (ATS) product from Freshworks. Its public API
+    (developers.freshteam.com/api) is pure request/response REST over HTTPS,
+    scoped to an account-specific base https://{domain}.freshteam.com/api and
+    authenticated with an account API token passed as a Bearer credential
+    (Authorization: Bearer YOUR_API_TOKEN). Resources cover employees, employee
+    custom fields, organization structure (branches, departments, sub-departments,
+    business units, teams, levels, roles), time-off, job postings, applicants,
+    candidate sources, and new hires. List endpoints are paginated (page, sort,
+    sort_type) and return total-objects / total-pages / link headers. No
+    realtime, bidirectional, or streaming WebSocket (ws:// or wss://) endpoint is
+    documented on Freshteam's own API.
+  productStatus: |
+    IMPORTANT - Freshworks has announced the end-of-life of Freshteam. New
+    subscriptions and renewals are halted starting March 7, 2026, and existing
+    customers retain access (and thus API access) only through the end of their
+    subscription term, reported through approximately April 2027. Freshworks is
+    consolidating non-IT team use cases into Freshservice for Business Teams. The
+    Freshteam REST API remains documented and usable for current customers during
+    this sunset window, but is not available to new signups. This entry documents
+    the API honestly as an existing but discontinuing product.
+  authModel: |
+    A per-account API token generated in the Freshteam UI (profile icon > API
+    Settings > Your API Key), sent as Authorization: Bearer YOUR_API_TOKEN.
+    Freshworks documents this under an OAuth 2.0 heading, but in practice the
+    credential is a long-lived static account key rather than a short-lived
+    user-authorized token.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://{domain}.freshteam.com/api
+      documented: true
+      note: Account-specific REST base for all documented Freshteam endpoints.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the Freshteam API reference as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://{domain}.freshteam.com/api/employees
+    - POST   https://{domain}.freshteam.com/api/employees
+    - GET    https://{domain}.freshteam.com/api/employees/{id}
+    - PUT    https://{domain}.freshteam.com/api/employees/{id}
+    - GET    https://{domain}.freshteam.com/api/employee_fields
+    - GET    https://{domain}.freshteam.com/api/branches
+    - GET    https://{domain}.freshteam.com/api/departments
+    - GET    https://{domain}.freshteam.com/api/sub_departments
+    - GET    https://{domain}.freshteam.com/api/business_units
+    - GET    https://{domain}.freshteam.com/api/teams
+    - GET    https://{domain}.freshteam.com/api/roles
+    - GET    https://{domain}.freshteam.com/api/time_offs
+    - POST   https://{domain}.freshteam.com/api/time_offs
+    - GET    https://{domain}.freshteam.com/api/time_offs/{id}
+    - PUT    https://{domain}.freshteam.com/api/time_offs/{id}/approve
+    - PUT    https://{domain}.freshteam.com/api/time_offs/{id}/cancel
+    - GET    https://{domain}.freshteam.com/api/time_off_types
+    - GET    https://{domain}.freshteam.com/api/job_postings
+    - GET    https://{domain}.freshteam.com/api/job_postings/{id}
+    - GET    https://{domain}.freshteam.com/api/job_posting_fields
+    - POST   https://{domain}.freshteam.com/api/job_postings/{id}/applicants
+    - GET    https://{domain}.freshteam.com/api/candidate_sources
+    - POST   https://{domain}.freshteam.com/api/candidate_sources
+    - POST   https://{domain}.freshteam.com/api/new_hires
+    - GET    https://{domain}.freshteam.com/api/new_hires/{id}
+sources:
+  - url: https://developers.freshteam.com/api/
+    type: Documentation
+    note: Freshteam API reference - base URL, Bearer auth, pagination, and all REST resources. No WebSocket mentioned.
+  - url: https://www.freshworks.com/hrms/
+    type: Website
+    note: Freshteam HRMS product page.
+  - url: https://www.peoplematters.in/news/business/freshworks-to-end-freshteam-hr-product-stop-renewals-from-march-2026-47939
+    type: Article
+    note: Reports Freshworks ending Freshteam and halting renewals from March 7, 2026.
+  - url: https://www.pin.com/blog/freshteam-pricing/
+    type: Article
+    note: Freshteam pricing tiers and confirmation of the shutdown timeline through April 2027.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists - Freshteam's documented public API is
+    request/response REST over HTTPS. No AsyncAPI document was created because
+    there is no server-push transport on Freshteam's own API to model. The entry
+    additionally documents Freshworks' end-of-life of Freshteam honestly, since
+    the product is closed to new subscriptions and renewals as of March 7, 2026.

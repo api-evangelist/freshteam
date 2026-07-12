@@ -1,0 +1,70 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Freshteam
+providerId: freshteam
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Human Resources
+- HRIS
+- Applicant Tracking
+- Rate Limiting
+- Quotas
+description: >-
+  The Freshteam API applies per-minute request limits that scale with the
+  account's subscribed employee count and plan tier. Documented tiers are - Free -
+  no limit; Trial - 10 requests per minute; Growth and Pro - MAX(50, employee
+  count) per minute; Enterprise - MAX(100, 2x employee count) per minute. Every
+  response carries x-ratelimit-total, x-ratelimit-remaining, and
+  x-ratelimit-used-currentrequest headers so clients can track consumption.
+notes: >-
+  Limits are per minute and computed from the number of subscribed employees, so
+  larger organizations get proportionally higher ceilings. As Freshworks sunsets
+  Freshteam, these limits apply only to surviving customer accounts during their
+  remaining subscription term. Verify current numbers in the developer docs.
+sources:
+- https://developers.freshteam.com/api/
+responseCodes:
+  throttled: 429
+limits:
+- name: Free Plan Requests
+  scope: account
+  metric: requests
+  limit: no limit
+  timeFrame: minute
+  notes: The Free tier is documented as having no per-minute API request cap.
+- name: Trial Requests
+  scope: account
+  metric: requests
+  limit: '10'
+  timeFrame: minute
+  notes: Trial accounts are capped at 10 requests per minute.
+- name: Growth and Pro Requests
+  scope: account
+  metric: requests
+  limit: MAX(50, employee_count)
+  timeFrame: minute
+  notes: Whichever is greater of 50 or the number of subscribed employees, per minute.
+- name: Enterprise Requests
+  scope: account
+  metric: requests
+  limit: MAX(100, 2 x employee_count)
+  timeFrame: minute
+  notes: Whichever is greater of 100 or twice the number of subscribed employees, per minute.
+headers:
+- name: x-ratelimit-total
+  description: The total request allowance for the current window.
+- name: x-ratelimit-remaining
+  description: Requests remaining in the current window.
+- name: x-ratelimit-used-currentrequest
+  description: Cost, in requests, attributed to the current call.
+policies:
+- name: Backoff Strategy
+  description: On a 429 response, back off and retry using the x-ratelimit-remaining header and exponential backoff with jitter.
+- name: Pagination
+  description: List endpoints default to 50 objects per page; page with the page query parameter and total-pages / link response headers to spread load.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
