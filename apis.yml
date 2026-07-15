@@ -146,6 +146,8 @@ apis:
     workflows - converting an accepted candidate into an incoming employee before
     their start date.
 common:
+- type: AgenticAccess
+  url: agentic-access/freshteam-agentic-access.yml
 - type: Authentication
   url: authentication/freshteam-authentication.yml
 - type: LinkedIn
