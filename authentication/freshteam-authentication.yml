@@ -10,7 +10,7 @@ schemes:
   scheme: bearer
   description: 'Freshteam uses a per-account API token passed as a Bearer credential.
     An admin generates it in the Freshteam UI under profile icon > API Settings >
-    Your API Key, then sends it on every request as `Authorization: Bearer YOUR_API_TOKEN`.
+    Your API Key, then sends it on every request as `Authorization: Bearer [example key]`.
     Although Freshworks documents the flow under an OAuth 2.0 heading, in practice
     the token is a long-lived static account key rather than a short-lived
     per-user-authorized token.'
