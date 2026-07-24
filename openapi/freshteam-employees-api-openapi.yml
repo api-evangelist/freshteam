@@ -1,0 +1,303 @@
+openapi: 3.0.3
+info:
+  title: Freshteam Applicants Employees API
+  description: 'The Freshteam API is the REST interface to Freshworks'' HR and applicant tracking (ATS) product. It covers the HRIS core (employees, custom fields, and organization structure), time-off (leave), recruiting (job postings), the ATS (applicants and candidate sources), and onboarding (new hires). Requests target an account-specific base, https://{domain}.freshteam.com/api, where {domain} is your Freshteam subdomain, and carry an account API token as a Bearer credential (generated in the UI under API Settings). List endpoints are paginated with page, sort, and sort_type query parameters and return total-objects, total-pages, and link response headers.
+
+    STATUS - Freshworks has announced the end-of-life of Freshteam. New subscriptions and renewals are halted starting March 7, 2026; existing customers retain access, and thus API access, only through the end of their subscription term (reported through approximately April 2027). This document models the publicly documented API as it exists during the sunset window; new customers cannot obtain access.'
+  version: '1.0'
+  contact:
+    name: Freshworks - Freshteam
+    url: https://developers.freshteam.com/api/
+servers:
+- url: https://{domain}.freshteam.com/api
+  description: Account-specific Freshteam API base
+  variables:
+    domain:
+      default: your-account
+      description: Your Freshteam account subdomain.
+security:
+- bearerAuth: []
+tags:
+- name: Employees
+  description: Employee records, custom fields, and organization structure (HRIS).
+paths:
+  /employees:
+    get:
+      operationId: listEmployees
+      tags:
+      - Employees
+      summary: List employees
+      description: Lists employees in the account. Paginated via page, sort, and sort_type.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/SortType'
+      responses:
+        '200':
+          description: A list of employees.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    post:
+      operationId: createEmployee
+      tags:
+      - Employees
+      summary: Create an employee
+      description: Creates a new employee record.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '201':
+          description: The created employee.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /employees/{id}:
+    get:
+      operationId: getEmployee
+      tags:
+      - Employees
+      summary: Retrieve an employee
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: The requested employee.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateEmployee
+      tags:
+      - Employees
+      summary: Update an employee
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '200':
+          description: The updated employee.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /employee_fields:
+    get:
+      operationId: listEmployeeFields
+      tags:
+      - Employees
+      summary: List employee fields
+      description: Lists the standard and custom fields defined on employee records.
+      responses:
+        '200':
+          description: A list of employee fields.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /branches:
+    get:
+      operationId: listBranches
+      tags:
+      - Employees
+      summary: List branches
+      responses:
+        '200':
+          description: A list of branches.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /departments:
+    get:
+      operationId: listDepartments
+      tags:
+      - Employees
+      summary: List departments
+      responses:
+        '200':
+          description: A list of departments.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sub_departments:
+    get:
+      operationId: listSubDepartments
+      tags:
+      - Employees
+      summary: List sub-departments
+      responses:
+        '200':
+          description: A list of sub-departments.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /business_units:
+    get:
+      operationId: listBusinessUnits
+      tags:
+      - Employees
+      summary: List business units
+      responses:
+        '200':
+          description: A list of business units.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /teams:
+    get:
+      operationId: listTeams
+      tags:
+      - Employees
+      summary: List teams
+      responses:
+        '200':
+          description: A list of teams.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /roles:
+    get:
+      operationId: listRoles
+      tags:
+      - Employees
+      summary: List roles
+      responses:
+        '200':
+          description: A list of roles.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number for paginated list results (default 1).
+      schema:
+        type: integer
+        default: 1
+    Sort:
+      name: sort
+      in: query
+      required: false
+      description: Field to sort the list by.
+      schema:
+        type: string
+    SortType:
+      name: sort_type
+      in: query
+      required: false
+      description: Sort direction, asc or desc.
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+    IdPath:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier.
+      schema:
+        type: integer
+        format: int64
+  responses:
+    Unauthorized:
+      description: Authentication failed or the API token is missing or invalid.
+    RateLimited:
+      description: Rate limit exceeded. See x-ratelimit-remaining header.
+    NotFound:
+      description: The requested resource was not found.
+  schemas:
+    Employee:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        first_name:
+          type: string
+        last_name:
+          type: string
+        official_email:
+          type: string
+          format: email
+        designation:
+          type: string
+        department_id:
+          type: integer
+          format: int64
+        branch_id:
+          type: integer
+          format: int64
+        reporting_to_id:
+          type: integer
+          format: int64
+        status:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Account API token generated in the Freshteam UI under API Settings, passed as Authorization: Bearer YOUR_API_TOKEN.'
