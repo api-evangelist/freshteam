@@ -13,7 +13,20 @@ description: Freshteam is the HR and applicant tracking (ATS) product from Fresh
   approximately April 2027). This entry documents the API honestly as an existing
   but sunsetting product; the API remains usable for current customers during the
   transition but is not available to new signups.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/freshteam.png
 tags:
 - Human Resources
 - HRIS
@@ -29,122 +42,136 @@ created: '2026-07-11'
 modified: '2026-07-11'
 specificationVersion: '0.19'
 apis:
-- aid: freshteam:freshteam-employees-api
-  name: Freshteam Employees API
-  tags:
-  - Employees
-  - HRIS
-  - Employee Management
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.freshteam.com/api/
-  baseURL: https://{domain}.freshteam.com/api
-  properties:
-  - url: https://developers.freshteam.com/api/
-    type: Documentation
-  - url: https://developers.freshteam.com/api/#employees
-    type: APIReference
-  - url: openapi/freshteam-openapi.yml
-    type: OpenAPI
-  - url: collections/freshteam.postman_collection.json
-    type: PostmanCollection
-  - url: collections/freshteam.opencollection.json
-    type: OpenCollection
-  description: List, create, retrieve, and update employee records, manage custom
-    employee fields, send portal invites, and read organization structure - branches,
-    departments, sub-departments, business units, teams, levels, and roles. This is
-    the HRIS core of Freshteam.
-- aid: freshteam:freshteam-time-off-api
-  name: Freshteam Time-off API
-  tags:
-  - Time Off
-  - Leave
-  - Employee Management
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.freshteam.com/api/
-  baseURL: https://{domain}.freshteam.com/api
-  properties:
-  - url: https://developers.freshteam.com/api/
-    type: Documentation
-  - url: https://developers.freshteam.com/api/#time_offs
-    type: APIReference
-  - url: openapi/freshteam-openapi.yml
-    type: OpenAPI
-  - url: collections/freshteam.postman_collection.json
-    type: PostmanCollection
-  - url: collections/freshteam.opencollection.json
-    type: OpenCollection
-  description: Create, list, and retrieve time-off (leave) requests, approve or cancel
-    them, and read the configured time-off types. Lets HR systems automate leave
-    workflows against employee balances.
-- aid: freshteam:freshteam-job-postings-api
-  name: Freshteam Job Postings API
-  tags:
-  - Job Postings
-  - Recruiting
-  - Applicant Tracking
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.freshteam.com/api/
-  baseURL: https://{domain}.freshteam.com/api
-  properties:
-  - url: https://developers.freshteam.com/api/
-    type: Documentation
-  - url: https://developers.freshteam.com/api/#job_postings
-    type: APIReference
-  - url: openapi/freshteam-openapi.yml
-    type: OpenAPI
-  - url: collections/freshteam.postman_collection.json
-    type: PostmanCollection
-  - url: collections/freshteam.opencollection.json
-    type: OpenCollection
-  description: List and retrieve job postings and their custom fields. Powers careers
-    sites, job boards, and recruiting integrations that syndicate open roles managed
-    in the Freshteam applicant tracking system.
 - aid: freshteam:freshteam-applicants-api
   name: Freshteam Applicants API
+  description: Applicants (candidates) and candidate sources (ATS).
+  humanURL: https://developers.freshteam.com/api/
+  baseURL: https://{domain}.freshteam.com/api
   tags:
   - Applicants
-  - Candidates
-  - Applicant Tracking
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  properties:
+  - type: OpenAPI
+    url: openapi/freshteam-applicants-api-openapi.yml
+  - type: Documentation
+    url: https://developers.freshteam.com/api/
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#employees
+  - type: PostmanCollection
+    url: collections/freshteam.postman_collection.json
+  - type: OpenCollection
+    url: collections/freshteam.opencollection.json
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#time_offs
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#job_postings
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#applicants
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#new_hires
+- aid: freshteam:freshteam-employees-api
+  name: Freshteam Employees API
+  description: Employee records, custom fields, and organization structure (HRIS).
   humanURL: https://developers.freshteam.com/api/
   baseURL: https://{domain}.freshteam.com/api
+  tags:
+  - Employees
   properties:
-  - url: https://developers.freshteam.com/api/
-    type: Documentation
-  - url: https://developers.freshteam.com/api/#applicants
-    type: APIReference
-  - url: openapi/freshteam-openapi.yml
-    type: OpenAPI
-  - url: collections/freshteam.postman_collection.json
-    type: PostmanCollection
-  - url: collections/freshteam.opencollection.json
-    type: OpenCollection
-  description: Create applicants (candidates) against a job posting and manage candidate
-    sources. The ATS surface for pushing inbound applications and tracking where
-    candidates come from into Freshteam's recruiting pipeline.
+  - type: OpenAPI
+    url: openapi/freshteam-employees-api-openapi.yml
+  - type: Documentation
+    url: https://developers.freshteam.com/api/
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#employees
+  - type: PostmanCollection
+    url: collections/freshteam.postman_collection.json
+  - type: OpenCollection
+    url: collections/freshteam.opencollection.json
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#time_offs
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#job_postings
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#applicants
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#new_hires
+- aid: freshteam:freshteam-job-postings-api
+  name: Freshteam Job Postings API
+  description: Job postings and their custom fields (recruiting).
+  humanURL: https://developers.freshteam.com/api/
+  baseURL: https://{domain}.freshteam.com/api
+  tags:
+  - Job Postings
+  properties:
+  - type: OpenAPI
+    url: openapi/freshteam-job-postings-api-openapi.yml
+  - type: Documentation
+    url: https://developers.freshteam.com/api/
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#employees
+  - type: PostmanCollection
+    url: collections/freshteam.postman_collection.json
+  - type: OpenCollection
+    url: collections/freshteam.opencollection.json
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#time_offs
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#job_postings
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#applicants
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#new_hires
 - aid: freshteam:freshteam-onboarding-api
   name: Freshteam Onboarding API
-  tags:
-  - Onboarding
-  - New Hires
-  - Employee Management
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  description: New-hire records for pre-boarding and onboarding.
   humanURL: https://developers.freshteam.com/api/
   baseURL: https://{domain}.freshteam.com/api
+  tags:
+  - Onboarding
   properties:
-  - url: https://developers.freshteam.com/api/
-    type: Documentation
-  - url: https://developers.freshteam.com/api/#new_hires
-    type: APIReference
-  - url: openapi/freshteam-openapi.yml
-    type: OpenAPI
-  - url: collections/freshteam.postman_collection.json
-    type: PostmanCollection
-  - url: collections/freshteam.opencollection.json
-    type: OpenCollection
-  description: Create and retrieve new-hire records to drive pre-boarding and onboarding
-    workflows - converting an accepted candidate into an incoming employee before
-    their start date.
+  - type: OpenAPI
+    url: openapi/freshteam-onboarding-api-openapi.yml
+  - type: Documentation
+    url: https://developers.freshteam.com/api/
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#employees
+  - type: PostmanCollection
+    url: collections/freshteam.postman_collection.json
+  - type: OpenCollection
+    url: collections/freshteam.opencollection.json
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#time_offs
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#job_postings
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#applicants
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#new_hires
+- aid: freshteam:freshteam-time-off-api
+  name: Freshteam Time-off API
+  description: Time-off (leave) requests and types.
+  humanURL: https://developers.freshteam.com/api/
+  baseURL: https://{domain}.freshteam.com/api
+  tags:
+  - Time-off
+  properties:
+  - type: OpenAPI
+    url: openapi/freshteam-time-off-api-openapi.yml
+  - type: Documentation
+    url: https://developers.freshteam.com/api/
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#employees
+  - type: PostmanCollection
+    url: collections/freshteam.postman_collection.json
+  - type: OpenCollection
+    url: collections/freshteam.opencollection.json
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#time_offs
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#job_postings
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#applicants
+  - type: APIReference
+    url: https://developers.freshteam.com/api/#new_hires
 common:
 - type: AgenticAccess
   url: agentic-access/freshteam-agentic-access.yml
