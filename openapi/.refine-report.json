@@ -1,0 +1,22 @@
+{
+  "provider": "freshteam",
+  "sources": [
+    "freshteam-applicants-api-openapi.yml",
+    "freshteam-employees-api-openapi.yml",
+    "freshteam-job-postings-api-openapi.yml",
+    "freshteam-onboarding-api-openapi.yml",
+    "freshteam-time-off-api-openapi.yml"
+  ],
+  "outputs": [
+    "freshteam-applicants-api-openapi.yml",
+    "freshteam-employees-api-openapi.yml",
+    "freshteam-job-postings-api-openapi.yml",
+    "freshteam-onboarding-api-openapi.yml",
+    "freshteam-time-off-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
