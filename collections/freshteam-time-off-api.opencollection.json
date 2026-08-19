@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Freshteam Applicants Time-off API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Time-off",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List time-off requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.freshteam.com/api/time_offs",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated list results (default 1)."
+              }
+            ]
+          },
+          "docs": "List time-off requests"
+        },
+        {
+          "info": {
+            "name": "Create a time-off request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.freshteam.com/api/time_offs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a time-off request"
+        },
+        {
+          "info": {
+            "name": "Retrieve a time-off request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.freshteam.com/api/time_offs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a time-off request"
+        },
+        {
+          "info": {
+            "name": "Approve a time-off request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{domain}.freshteam.com/api/time_offs/:id/approve",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier."
+              }
+            ]
+          },
+          "docs": "Approve a time-off request"
+        },
+        {
+          "info": {
+            "name": "Cancel a time-off request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{domain}.freshteam.com/api/time_offs/:id/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier."
+              }
+            ]
+          },
+          "docs": "Cancel a time-off request"
+        },
+        {
+          "info": {
+            "name": "List time-off types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.freshteam.com/api/time_off_types"
+          },
+          "docs": "List time-off types"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

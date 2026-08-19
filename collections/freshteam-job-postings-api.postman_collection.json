@@ -1,0 +1,496 @@
+{
+  "item": [
+    {
+      "id": "97d3e44a-2e13-4fa7-8dc7-ac1b6624666e",
+      "name": "Job Postings",
+      "description": {
+        "content": "Job postings and their custom fields (recruiting).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "896b4aae-f071-4659-94d8-8df6291c69c7",
+          "name": "List job postings",
+          "request": {
+            "name": "List job postings",
+            "description": {},
+            "url": {
+              "path": [
+                "job_postings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for paginated list results (default 1)."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Freshteam account subdomain.",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "abf9324c-c176-448e-bcc7-3e6a67bc7f56",
+              "name": "A list of job postings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job_postings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Freshteam account subdomain.",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1571,\n    \"title\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"remote\": false,\n    \"description\": \"string\",\n    \"branch_id\": 881,\n    \"department_id\": 7078\n  },\n  {\n    \"id\": 2490,\n    \"title\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"remote\": true,\n    \"description\": \"string\",\n    \"branch_id\": 4490,\n    \"department_id\": 3921\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0fb2c737-36d9-4b15-a2bb-3dfb139ee1f0",
+              "name": "Authentication failed or the API token is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job_postings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Freshteam account subdomain.",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3e02828-e4f7-4d3c-a934-dfb12701a044",
+          "name": "Retrieve a job posting",
+          "request": {
+            "name": "Retrieve a job posting",
+            "description": {},
+            "url": {
+              "path": [
+                "job_postings",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The resource identifier."
+                },
+                {
+                  "description": "Your Freshteam account subdomain.",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb2dec6e-8680-4b08-bacf-96a4bae75cf2",
+              "name": "The requested job posting.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job_postings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier."
+                    },
+                    {
+                      "description": "Your Freshteam account subdomain.",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7245,\n  \"title\": \"string\",\n  \"status\": \"string\",\n  \"type\": \"string\",\n  \"remote\": false,\n  \"description\": \"string\",\n  \"branch_id\": 1276,\n  \"department_id\": 9089\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5aa7f0e-1288-4fd8-b73e-e26117da8d0f",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job_postings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier."
+                    },
+                    {
+                      "description": "Your Freshteam account subdomain.",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6030f456-fa20-4685-9f0a-659d9b776371",
+          "name": "List job posting fields",
+          "request": {
+            "name": "List job posting fields",
+            "description": {},
+            "url": {
+              "path": [
+                "job_posting_fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Freshteam account subdomain.",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3953c343-5c20-43c9-82a9-69b870bd19b3",
+              "name": "A list of job posting fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job_posting_fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Freshteam account subdomain.",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63dfbb77-3197-4135-a0df-d3bad565bef0",
+              "name": "Authentication failed or the API token is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job_posting_fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Freshteam account subdomain.",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Freshteam account subdomain.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "your-account",
+      "key": "domain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{domain}}.freshteam.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f8206ba2-9991-4994-bbc2-f29ad117a6c6",
+    "name": "Freshteam Applicants Job Postings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Freshteam API is the REST interface to Freshworks' HR and applicant tracking (ATS) product. It covers the HRIS core (employees, custom fields, and organization structure), time-off (leave), recruiting (job postings), the ATS (applicants and candidate sources), and onboarding (new hires). Requests target an account-specific base, https://{domain}.freshteam.com/api, where {domain} is your Freshteam subdomain, and carry an account API token as a Bearer credential (generated in the UI under API Settings). List endpoints are paginated with page, sort, and sort_type query parameters and return total-objects, total-pages, and link response headers.\nSTATUS - Freshworks has announced the end-of-life of Freshteam. New subscriptions and renewals are halted starting March 7, 2026; existing customers retain access, and thus API access, only through the end of their subscription term (reported through approximately April 2027). This document models the publicly documented API as it exists during the sunset window; new customers cannot obtain access.\n\nContact Support:\n Name: Freshworks - Freshteam",
+      "type": "text/plain"
+    }
+  }
+}

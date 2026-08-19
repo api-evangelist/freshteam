@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Freshteam Applicants Job Postings API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Job Postings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List job postings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.freshteam.com/api/job_postings",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated list results (default 1)."
+              }
+            ]
+          },
+          "docs": "List job postings"
+        },
+        {
+          "info": {
+            "name": "Retrieve a job posting",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.freshteam.com/api/job_postings/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a job posting"
+        },
+        {
+          "info": {
+            "name": "List job posting fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.freshteam.com/api/job_posting_fields"
+          },
+          "docs": "List job posting fields"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
