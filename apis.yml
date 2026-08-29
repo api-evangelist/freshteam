@@ -13,6 +13,18 @@ description: Freshteam is the HR and applicant tracking (ATS) product from Fresh
   approximately April 2027). This entry documents the API honestly as an existing
   but sunsetting product; the API remains usable for current customers during the
   transition but is not available to new signups.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
