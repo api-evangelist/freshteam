@@ -164,7 +164,7 @@ apis:
   humanURL: https://developers.freshteam.com/api/
   baseURL: https://{domain}.freshteam.com/api
   tags:
-  - Time-off
+  - Time Off
   tags_raw:
   - Time-off
   properties:
