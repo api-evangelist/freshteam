@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Freshteam Applicants Employees API
-  description: 'The Freshteam API is the REST interface to Freshworks'' HR and applicant tracking (ATS) product. It covers the HRIS core (employees, custom fields, and organization structure), time-off (leave), recruiting (job postings), the ATS (applicants and candidate sources), and onboarding (new hires). Requests target an account-specific base, https://{domain}.freshteam.com/api, where {domain} is your Freshteam subdomain, and carry an account API token as a Bearer credential (generated in the UI under API Settings). List endpoints are paginated with page, sort, and sort_type query parameters and return total-objects, total-pages, and link response headers.
-
-    STATUS - Freshworks has announced the end-of-life of Freshteam. New subscriptions and renewals are halted starting March 7, 2026; existing customers retain access, and thus API access, only through the end of their subscription term (reported through approximately April 2027). This document models the publicly documented API as it exists during the sunset window; new customers cannot obtain access.'
+  title: Freshteam Employees API
+  description: The Freshteam API is the REST interface to Freshworks' HR and applicant tracking (ATS) product.
   version: '1.0'
   contact:
     name: Freshworks - Freshteam
@@ -229,14 +227,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   parameters:
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page number for paginated list results (default 1).
-      schema:
-        type: integer
-        default: 1
     Sort:
       name: sort
       in: query
@@ -262,13 +252,21 @@ components:
       schema:
         type: integer
         format: int64
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number for paginated list results (default 1).
+      schema:
+        type: integer
+        default: 1
   responses:
-    Unauthorized:
-      description: Authentication failed or the API token is missing or invalid.
-    RateLimited:
-      description: Rate limit exceeded. See x-ratelimit-remaining header.
     NotFound:
       description: The requested resource was not found.
+    RateLimited:
+      description: Rate limit exceeded. See x-ratelimit-remaining header.
+    Unauthorized:
+      description: Authentication failed or the API token is missing or invalid.
   schemas:
     Employee:
       type: object

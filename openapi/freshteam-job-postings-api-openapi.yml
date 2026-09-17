@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Freshteam Applicants Job Postings API
-  description: 'The Freshteam API is the REST interface to Freshworks'' HR and applicant tracking (ATS) product. It covers the HRIS core (employees, custom fields, and organization structure), time-off (leave), recruiting (job postings), the ATS (applicants and candidate sources), and onboarding (new hires). Requests target an account-specific base, https://{domain}.freshteam.com/api, where {domain} is your Freshteam subdomain, and carry an account API token as a Bearer credential (generated in the UI under API Settings). List endpoints are paginated with page, sort, and sort_type query parameters and return total-objects, total-pages, and link response headers.
-
-    STATUS - Freshworks has announced the end-of-life of Freshteam. New subscriptions and renewals are halted starting March 7, 2026; existing customers retain access, and thus API access, only through the end of their subscription term (reported through approximately April 2027). This document models the publicly documented API as it exists during the sunset window; new customers cannot obtain access.'
+  title: Freshteam Job Postings API
+  description: The Freshteam API is the REST interface to Freshworks' HR and applicant tracking (ATS) product.
   version: '1.0'
   contact:
     name: Freshworks - Freshteam
@@ -75,28 +73,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page number for paginated list results (default 1).
-      schema:
-        type: integer
-        default: 1
-    IdPath:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier.
-      schema:
-        type: integer
-        format: int64
-  responses:
-    Unauthorized:
-      description: Authentication failed or the API token is missing or invalid.
-    NotFound:
-      description: The requested resource was not found.
   schemas:
     JobPosting:
       type: object
@@ -120,6 +96,28 @@ components:
         department_id:
           type: integer
           format: int64
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication failed or the API token is missing or invalid.
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier.
+      schema:
+        type: integer
+        format: int64
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number for paginated list results (default 1).
+      schema:
+        type: integer
+        default: 1
   securitySchemes:
     bearerAuth:
       type: http
