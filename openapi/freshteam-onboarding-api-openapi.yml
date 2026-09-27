@@ -64,15 +64,6 @@ components:
       description: The requested resource was not found.
     Unauthorized:
       description: Authentication failed or the API token is missing or invalid.
-  parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier.
-      schema:
-        type: integer
-        format: int64
   schemas:
     NewHire:
       type: object
@@ -95,6 +86,15 @@ components:
         department_id:
           type: integer
           format: int64
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier.
+      schema:
+        type: integer
+        format: int64
   securitySchemes:
     bearerAuth:
       type: http

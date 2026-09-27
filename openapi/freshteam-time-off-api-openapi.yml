@@ -150,20 +150,7 @@ components:
           type: string
         reason:
           type: string
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-    Unauthorized:
-      description: Authentication failed or the API token is missing or invalid.
   parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier.
-      schema:
-        type: integer
-        format: int64
     Page:
       name: page
       in: query
@@ -172,6 +159,19 @@ components:
       schema:
         type: integer
         default: 1
+    IdPath:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier.
+      schema:
+        type: integer
+        format: int64
+  responses:
+    Unauthorized:
+      description: Authentication failed or the API token is missing or invalid.
+    NotFound:
+      description: The requested resource was not found.
   securitySchemes:
     bearerAuth:
       type: http
