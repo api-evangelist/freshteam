@@ -226,21 +226,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded. See x-ratelimit-remaining header.
-    Unauthorized:
-      description: Authentication failed or the API token is missing or invalid.
-    NotFound:
-      description: The requested resource was not found.
   parameters:
-    Sort:
-      name: sort
-      in: query
-      required: false
-      description: Field to sort the list by.
-      schema:
-        type: string
     Page:
       name: page
       in: query
@@ -249,14 +235,13 @@ components:
       schema:
         type: integer
         default: 1
-    IdPath:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier.
+    Sort:
+      name: sort
+      in: query
+      required: false
+      description: Field to sort the list by.
       schema:
-        type: integer
-        format: int64
+        type: string
     SortType:
       name: sort_type
       in: query
@@ -267,6 +252,21 @@ components:
         enum:
         - asc
         - desc
+    IdPath:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier.
+      schema:
+        type: integer
+        format: int64
+  responses:
+    Unauthorized:
+      description: Authentication failed or the API token is missing or invalid.
+    RateLimited:
+      description: Rate limit exceeded. See x-ratelimit-remaining header.
+    NotFound:
+      description: The requested resource was not found.
   schemas:
     Employee:
       type: object
