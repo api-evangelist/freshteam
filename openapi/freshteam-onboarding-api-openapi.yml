@@ -82,10 +82,10 @@ components:
           type: integer
           format: int64
   responses:
-    NotFound:
-      description: The requested resource was not found.
     Unauthorized:
       description: Authentication failed or the API token is missing or invalid.
+    NotFound:
+      description: The requested resource was not found.
   parameters:
     IdPath:
       name: id

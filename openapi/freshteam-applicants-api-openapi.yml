@@ -84,6 +84,18 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or the API token is missing or invalid.
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier.
+      schema:
+        type: integer
+        format: int64
   schemas:
     Applicant:
       type: object
@@ -106,18 +118,6 @@ components:
         resume:
           type: string
           description: URL or base64 payload of the candidate resume.
-  responses:
-    Unauthorized:
-      description: Authentication failed or the API token is missing or invalid.
-  parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier.
-      schema:
-        type: integer
-        format: int64
   securitySchemes:
     bearerAuth:
       type: http
