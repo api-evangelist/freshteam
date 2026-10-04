@@ -1,0 +1,58 @@
+slug: freshteam
+provider: Freshteam
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Applicants
+  spec_file: freshteam-applicants-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.95
+  evidence: '"POST /job_postings/{id}/applicants createApplicant Create an applicant for a job posting";
+    "GET /candidate_sources listCandidateSources"'
+  reason: Applicant tracking and candidate sourcing is Talent Acquisition.
+- tag: Job Postings
+  spec_file: freshteam-job-postings-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.9
+  evidence: '"GET /job_postings listJobPostings", schema "JobPosting"'
+  reason: Job requisition/posting management is part of recruiting.
+- tag: Employees
+  spec_file: freshteam-employees-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.85
+  evidence: '"GET /employees listEmployees", "GET /employee_fields listEmployeeFields", "GET /departments
+    listDepartments"'
+  reason: Employee master records and org structure = HR Operations (employee records / HRIS).
+- tag: Onboarding
+  spec_file: freshteam-onboarding-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.85
+  evidence: '"POST /new_hires createNewHire", schema "NewHire"'
+  reason: New-hire onboarding is explicitly within Talent Acquisition (sourcing, recruiting, hiring, onboarding).
+- tag: Time Off
+  spec_file: freshteam-time-off-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.75
+  evidence: '"POST /time_offs createTimeOff Create a time-off request", "PUT /time_offs/{id}/approve approveTimeOff"'
+  reason: Leave/absence request administration is HR service delivery; could arguably sit under benefits
+    but HR Operations fits best.

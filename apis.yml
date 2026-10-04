@@ -197,6 +197,9 @@ apis:
   - type: APIReference
     url: https://developers.freshteam.com/api/#new_hires
 common:
+- type: CapabilityMap
+  url: capabilities/freshteam-capability-edges.yml
+  name: Freshteam Business Capability Map
 - type: AgenticAccess
   url: agentic-access/freshteam-agentic-access.yml
 - type: Authentication
