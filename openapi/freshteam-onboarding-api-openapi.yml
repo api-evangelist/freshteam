@@ -59,6 +59,11 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication failed or the API token is missing or invalid.
   schemas:
     NewHire:
       type: object
@@ -81,11 +86,6 @@ components:
         department_id:
           type: integer
           format: int64
-  responses:
-    Unauthorized:
-      description: Authentication failed or the API token is missing or invalid.
-    NotFound:
-      description: The requested resource was not found.
   parameters:
     IdPath:
       name: id
