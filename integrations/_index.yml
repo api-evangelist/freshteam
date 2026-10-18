@@ -27,5 +27,5 @@
     - connectors/applications/freshteam
     vendor_link: https://www.freshworks.com/hrms/hr-software/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
