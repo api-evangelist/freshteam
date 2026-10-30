@@ -1,4 +1,4 @@
-# Freshteam (freshteam)
+# Freshteam
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,96 +64,123 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Freshteam is the HR and applicant tracking (ATS) product from Freshworks, covering recruiting, applicant tracking, employee information management (HRIS), onboarding, and time-off. It exposes a documented REST API on an account-specific base (`https://{domain}.freshteam.com/api`) with token authentication over Employees, Job Postings, Applicants, Interviews, Time-off, and organization structure (Departments, Branches, Teams).
+Freshteam is the HR and applicant tracking (ATS) product from Freshworks, covering recruiting, applicant tracking, employee information management (HRIS), onboarding, and time-off. It exposes a documented REST API on a per-domain base (https://{domain}.freshteam.com/api) with token auth over Employees, Job Postings, Applicants, Interviews, Time-off, and organization structure (Departments, Branches, Teams). IMPORTANT STATUS - Freshworks has announced the end-of-life of Freshteam - new subscriptions and renewals are halted starting March 7, 2026, and existing customers retain access only through the end of their term (reported through approximately April 2027). This entry documents the API honestly as an existing but sunsetting product; the API remains usable for current customers during the transition but is not available to new signups.
 
-> **Product status - end of life.** Freshworks has announced the discontinuation of Freshteam. New subscriptions and renewals are halted starting **March 7, 2026**, and existing customers retain access - and therefore API access - only through the end of their subscription term (reported through approximately **April 2027**). Freshworks is consolidating non-IT team use cases into Freshservice for Business Teams. The Freshteam REST API remains documented and usable for current customers during this sunset window, but is **not available to new signups**. This entry documents the API honestly as an existing but discontinuing product.
+**Areas:** Human Resources · HRIS · Applicant Tracking · Recruiting · Employee Management · Onboarding · Time Off · HR Software · End of Life
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/freshteam/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/freshteam/refs/heads/main/apis.yml)
+## Freshteam on APIs.io
 
-## Access Model
+Everything profiled for Freshteam is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/freshteam/](https://apis.io/providers/freshteam/)** — or go straight to one of the APIs or properties below.
 
-- **Base URL:** `https://{domain}.freshteam.com/api`, where `{domain}` is your Freshteam account subdomain.
-- **Authentication:** An account API token generated in the Freshteam UI under **profile icon > API Settings > Your API Key**, sent as `Authorization: Bearer YOUR_API_TOKEN`. Freshworks documents this under an OAuth 2.0 heading, but in practice the credential is a long-lived static account key.
-- **Pagination:** List endpoints default to 50 objects per page; page with `page`, `sort`, and `sort_type` query parameters and read `total-objects`, `total-pages`, and `link` response headers.
-- **Rate limits:** Per-minute limits scale with plan and headcount - Free (no limit), Trial (10/min), Growth and Pro (MAX(50, employees)/min), Enterprise (MAX(100, 2x employees)/min). Responses carry `x-ratelimit-total`, `x-ratelimit-remaining`, and `x-ratelimit-used-currentrequest`.
+### APIs (5)
 
-## Tags
+- [Freshteam Applicants API](https://apis.io/apis/freshteam/freshteam-applicants-api/) — Applicants (candidates) and candidate sources (ATS).
+- [Freshteam Employees API](https://apis.io/apis/freshteam/freshteam-employees-api/) — Employee records, custom fields, and organization structure (HRIS).
+- [Freshteam Job Postings API](https://apis.io/apis/freshteam/freshteam-job-postings-api/) — Job postings and their custom fields (recruiting).
+- [Freshteam Onboarding API](https://apis.io/apis/freshteam/freshteam-onboarding-api/) — New-hire records for pre-boarding and onboarding.
+- [Freshteam Time-off API](https://apis.io/apis/freshteam/freshteam-time-off-api/) — Time-off (leave) requests and types.
 
-- Human Resources
-- HRIS
-- Applicant Tracking
-- ATS
-- Recruiting
-- Employee Management
-- Onboarding
-- Time Off
-- HR Software
-- End of Life
+### Published properties
 
-## Timestamps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Created:** 2026-07-11
-- **Modified:** 2026-07-11
+#### Agentic access (1)
 
-## APIs
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Freshteam Employees API
+- [Freshteam Agentic Access](https://apis.io/agentic-access/freshteam/freshteam-agentic-access/)
 
-List, create, retrieve, and update employee records, manage custom employee fields, send portal invites, and read organization structure - branches, departments, sub-departments, business units, teams, levels, and roles. This is the HRIS core of Freshteam.
+#### Collections (6)
 
-- **Human URL:** [https://developers.freshteam.com/api/](https://developers.freshteam.com/api/)
-- **Base URL:** `https://{domain}.freshteam.com/api`
+Postman and Open Collection request collections.
 
-### Freshteam Time-off API
+- [Freshteam API](https://apis.io/collections/freshteam/open-freshteam/)
+- [Freshteam Applicants API](https://apis.io/collections/freshteam/open-freshteam-applicants-api/)
+- [Freshteam Applicants Employees API](https://apis.io/collections/freshteam/open-freshteam-employees-api/)
+- [Freshteam Applicants Job Postings API](https://apis.io/collections/freshteam/open-freshteam-job-postings-api/)
+- [Freshteam Applicants Onboarding API](https://apis.io/collections/freshteam/open-freshteam-onboarding-api/)
+- [Freshteam Applicants Time-off API](https://apis.io/collections/freshteam/open-freshteam-time-off-api/)
 
-Create, list, and retrieve time-off (leave) requests, approve or cancel them, and read the configured time-off types. Lets HR systems automate leave workflows against employee balances.
+#### Security (1)
 
-- **Human URL:** [https://developers.freshteam.com/api/](https://developers.freshteam.com/api/)
-- **Base URL:** `https://{domain}.freshteam.com/api`
+Authentication, trust centre, and vulnerability disclosure.
 
-### Freshteam Job Postings API
+- [Freshteam Authentication](https://apis.io/security/freshteam/freshteam-authentication/)
 
-List and retrieve job postings and their custom fields. Powers careers sites, job boards, and recruiting integrations that syndicate open roles managed in the Freshteam applicant tracking system.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://developers.freshteam.com/api/](https://developers.freshteam.com/api/)
-- **Base URL:** `https://{domain}.freshteam.com/api`
+Published plans, tiers and prices.
 
-### Freshteam Applicants API
+- [Freshteam Plans Pricing](https://apis.io/plans/freshteam/freshteam-plans-pricing/)
 
-Create applicants (candidates) against a job posting and manage candidate sources. The ATS surface for pushing inbound applications and tracking where candidates come from into Freshteam's recruiting pipeline.
+#### Rate limits (1)
 
-- **Human URL:** [https://developers.freshteam.com/api/](https://developers.freshteam.com/api/)
-- **Base URL:** `https://{domain}.freshteam.com/api`
+Published request limits.
 
-### Freshteam Onboarding API
+- [Freshteam Rate Limits](https://apis.io/rate-limits/freshteam/freshteam-rate-limits/)
 
-Create and retrieve new-hire records to drive pre-boarding and onboarding workflows - converting an accepted candidate into an incoming employee before their start date.
+#### FinOps (1)
 
-- **Human URL:** [https://developers.freshteam.com/api/](https://developers.freshteam.com/api/)
-- **Base URL:** `https://{domain}.freshteam.com/api`
+What the API costs to run, by operation.
 
-## Artifacts
+- [Freshteam Finops](https://apis.io/finops/freshteam/freshteam-finops/)
 
-- [OpenAPI](openapi/freshteam-openapi.yml) — modeled from the public Freshteam API reference
-- [Postman Collection](collections/freshteam.postman_collection.json)
-- [Open Collection](collections/freshteam.opencollection.json)
-- [Authentication](authentication/freshteam-authentication.yml)
-- [Plans / Pricing](plans/freshteam-plans-pricing.yml)
-- [Rate Limits](rate-limits/freshteam-rate-limits.yml)
-- [FinOps](finops/freshteam-finops.yml)
-- [Review](review.yml)
+## Where to find this API
 
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Authentication](authentication/freshteam-authentication.yml)
-- [LinkedIn](https://www.linkedin.com/company/freshworks-inc)
 - [Website](https://www.freshworks.com/hrms/)
 - [Documentation](https://developers.freshteam.com/api/)
-- [Plans](plans/freshteam-plans-pricing.yml)
-- [Rate Limits](rate-limits/freshteam-rate-limits.yml)
-- [FinOps](finops/freshteam-finops.yml)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 24.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 46.5 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 29.8 |
+| Access clarity | 7.9 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Employment & Payroll
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/freshteam/](https://apis.io/providers/freshteam/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Freshteam: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/freshteam/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
